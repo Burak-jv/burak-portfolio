@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burak'ın Websitesi</title>
+    <link rel="icon" type="image/png" href="image/favicon-32x32.png">
+    <title>Yalçın Burak Dağdelen</title>
     <style>
         * {
             margin: 0;
@@ -106,26 +107,48 @@
             font-size: 14px;
         }
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+                overflow-y: auto;
+                height: auto;
+            }
+
             nav {
                 width: 100%;
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: space-around;
+                padding: 10px;
+                position: static;
             }
+
+            nav button {
+                flex: 1 1 45%;
+                margin: 5px;
+                font-size: 14px;
+            }
+
             nav .submenu {
-                position: absolute;
-                top: 60px;
-                left: 0;
-                right: 0;
+                position: relative;
                 background: #1e293b;
+                width: 100%;
             }
+
             main {
-                padding: 20px 10px;
+                padding: 10px;
+                text-align: center;
             }
+
             .content {
                 max-width: 100%;
-                padding: 10px;
                 font-size: 16px;
+                overflow-y: auto;
+            }
+
+            footer {
+                position: relative;
+                text-align: center;
+                margin-top: 20px;
             }
         }
         #iletisim {
