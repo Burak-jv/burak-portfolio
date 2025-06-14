@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burak'ın Websitesi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #d9dee8, #aab8cf);
+            color: #1e293b;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+        nav {
+            width: 220px;
+            background: #1e293b;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        nav button {
+            background: #e2e8f0;
+            color: #1e293b;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: left;
+        }
+        nav button:hover {
+            background: #3b82f6;
+            color: white;
+        }
+        .submenu {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            padding-left: 10px;
+        }
+        .submenu button {
+            font-size: 14px;
+            padding: 8px;
+        }
+        .submenu.show {
+            display: flex;
+        }
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+        .content {
+            display: none;
+            max-width: 800px;
+            font-size: 18px;
+            overflow-y: auto;
+        }
+        .content.active {
+            display: block;
+        }
+        .skill-bar-container {
+            margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+        .skill {
+            margin-bottom: 15px;
+        }
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .skill-bar {
+            height: 20px;
+            background: #cbd5e1;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            background: #3b82f6;
+            width: 0;
+            animation: fillBar 1.5s forwards;
+        }
+        @keyframes fillBar {
+            to { width: var(--width); }
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            right: 20px;
+            font-size: 14px;
+        }
+        @media (max-width: 768px) {
+            nav {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            nav .submenu {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: #1e293b;
+            }
+            main {
+                padding: 20px 10px;
+            }
+            .content {
+                max-width: 100%;
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+        #iletisim {
+            padding: 30px;
+        }
+        #iletisim h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.3);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            transition: background .3s;
+        }
+        .contact-card:hover {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contact-form label {
+            font-weight: 600;
+            text-align: left;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #94a3b8;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .contact-form button {
+            padding: 12px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .contact-form button:hover {
+            background-color: #2563eb;
+        }
+
+        @media (max-width: 600px) {
+            .contact-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        #sertifikalar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .certificate-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .certificates {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .certificate-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .cert-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .certificate-item:hover .cert-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (max-width: 600px) {
+            .certificate-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .certificate-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .certificate-item.enlarged {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <button onclick="showSection('anasayfa')">🏠 Anasayfa</button>
+    <button onclick="showSection('hakkimda')">👤 Hakkımda</button>
+    <button onclick="showSection('sertifikalar')">🎓 Sertifikalar</button>
+    <button onclick="toggleSubmenu()">💼 Projelerim</button>
+    <div class="submenu" id="submenu">
+        <button onclick="showSection('proje1')">📚 Library System</button>
+        <button onclick="showSection('proje2')">⚡ Refleks Testi</button>
+        <button onclick="showSection('proje3')">🎮 2D Oyun</button>
+        <button onclick="showSection('proje4')">🔢 Hesap Makinesi</button>
+        <button onclick="showSection('proje5')">📅 Öğrenci Kayıt Sistemi</button>
+    </div>
+    <button onclick="showSection('iletisim')">📬 İletişim</button>
+</nav>
+
+<main>
+    <section id="anasayfa" class="content active">
+        <h2><u>Anasayfa</u></h2><br>
+        <p>Hoş geldin! Burası Burak'ın kişisel sitesidir.</p>
+        <p>Not: Bu alan şu anda yapım aşamsındadır!</p>
+        <button
+                type="button"
+                onclick="window.open('https://www.linkedin.com/in/burak-dağdelen-7546b7346/', '_blank')"
+                style="
+    display: block;
+    width: 100px;
+    height: 40px;
+    margin: 50px auto 0;
+    background: #0077b5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 1s ease;
+  "
+                onmouseover="this.style.background='#005582'"
+                onmouseout="this.style.background='#0077b5'"
+        >
+            LinkedIn
+        </button>
+
+    </section>
+    <section id="hakkimda" class="content" style="
+  padding: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  margin: 0 auto;
+  text-align: left;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 8px;
+">
+
+    <h2 style="text-align: center; margin-bottom: 20px;"><u>Hakkımda</u></h2>
+        <div style="text-align: left;">
+            <p>Merhaba ben Burak, size kendimi bu bölümde <b>iyice</b> tanıtacağım.</p>
+            <p>Öncelikle benim akademik hayatıma girişim <b>biraz sıkıntılı olmuştu.</b></p>
+            <p><b>Bolu İzzet Baysal Üniversitesi</b> Elektrik Elektronik Mühendisliğini birazcık aile zoru ile okuyordum.</p>
+            <p>2. sınıfa gelince arkadaşlarımdan biri <b>Anadolu Üniversitesi'nde</b> açıktan üniversite sınavına girmeden okuyabileceğimi söyledi.</p>
+            <p>Ben de liseden beri <b>yazılıma meraklıydım</b> ama bir türlü gayret gösterememiş, bir türlü o alana atılamamıştım.</p>
+            <p>Sonrasında açıktan <b>Bilgisayar Programcılığını</b> arkadaşım aracılığı ile yazdım.</p><br>
+            <p>Bir yerden sonra kendi vizelerime ve finallerime çalışmayı kesip <b>Bilgisayar Programcılığı'nın</b> sınavlarına çalışmaya başlamıştım.</p><br>
+            <p>Ve bir süre sonra bu alanda <b>daha başarılı</b> olduğumu fark ettim ve ailemle de konuşup okulu bırakıp bu bölümden devam etmeye başladım.</p>
+            <p>Bir süre sonra <b>Gazi Üniversitesi'nin</b> Beltek projesi altında genç öğrencilere <b>Java ve Python</b> eğitimi verdiklerini öğrendim ve hemen kaydoldum.</p><br>
+            <p><b>110 saatlik Java eğitimimi Gazi Üniversitesin'de yüz yüze</b> tamamladıktan sonra <b>Sayın Sinan Toklu</b> gözetimi altında 5 saatlik Java sınavına girdim.</p><br>
+            <p>Ve bu sınavdan başarı ile çıktım. Sınavı geçmemi sağlayan kodu hem projelerimden hem de <a href="https://github.com/Burak-jv/Ogrenci-Kayit-Sistemi" target="_parent">bu link sayesinde görebilirsiniz.</a></p><br>
+            <p>Şu an da yine <b>Gazi Üniversitesi'nde Sayın Uğur Özcan ile Python eğitimime devam ediyorum.</b> 2025 Haziran ayının sonunda onunda eğitimini tamamlamış olacağım.</p><br><br>
+                <h4>🧑🏻‍💻<u>Bildiğim Diller</u></h4><br>
+            <div class="skill-bar-container" style="margin-top:30px; max-width:600px; margin-left:auto; margin-right:auto; text-align:left;">
+                <div class="skill">
+                    <div class="skill-name">Python</div>
+                    <div class="skill-bar"><div class="skill-bar-fill" style="--width:90%;"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-bar"><div class="skill-bar-fill" style="--width:85%;"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">Java</div>
+                    <div class="skill-bar"><div class="skill-bar-fill" style="--width:75%;"></div></div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">C#</div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--width:20%;"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">C++</div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="--width:10%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <br><br>
+            <ol>
+                <h4>💻<u>Frontend ve Backend'de kullanabildiğim dil ve araçlar</u></h4>
+                <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+                <li><strong>Backend:</strong> Java, Python, Flask</li>
+            </ol>
+            <br><br>
+            <ol>
+                <li>
+                    <strong>🗄️<u>Veritabanı</u>:</strong> <em>MySQL, SQLite, DB</em> kullanarak veri işlemleri yaptım.
+                </li>
+            </ol>
+            <p>Akademik serüvenimden hakkımda bu kadar konuştuğumuz yeter sanırsam :D hadi birazda Kimmiş bu <b>Yalçın Burak Dağdelen</b> onu konuşalım; </p><br><br>
+            <p><strong>24/07/2003</strong> doğumluyum. 16 yaşımda <b>vücut geliştirme</b> ve <b>yüzme sporuna</b> ilgim çok arttı ve bu alanlarda hızla gelişmeye başladım.</p><br>
+            <p>Hatta (belki bunu yapmamam gerekiyor ama :D) mizah ve vücut geliştirmeyi birbirine karıştırdığım bir youtube kanalı bile açtım.</p>
+            <p>Toplam <b>500 abone</b> ve <b>80 bin civarı izlenmeyi</b> yakaladım. Fakat videolarda bulunan eski bir arkadaşım yüzünden çoğu videomu kaldırdım.</p><br>
+            <p>Ve bunun yüzünden youtube beni biraz az önermeye başlayınca ben de video çekmeyi bıraktım. Şu an da youtube bazı videolarım hala mevcut ama bir <b>anı</b> olarak.</p>
+            <p>Bazı videolarda <b>küfür ve uygunsuz hareketler</b> bulunabilir. Bu yüzden bu tarz şeylerden hoşlanmıyorsanız hiç bakmanıza gerek yok ama eğer isterseniz...</p><br>
+            <p>Altta <b>4 yıl önce</b> çektiğim gömülü youtube videom ile kanalımın linkini bırakıyorum.</p>
+        <button
+                type="button"
+                onclick="window.open('https://www.youtube.com/@burakdagdelen2304','_blank')"
+                style="
+    display: block;
+    width: 200px;
+    height: 40px;
+    margin: 20px auto 0;
+    background: #FF0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 1s ease;
+  "
+                onmouseover="this.style.background='#CC0000';"
+                onmouseout="(function(el){setTimeout(()=>el.style.background='#FF0000',1000)})(this);"
+        >
+            YouTube
+        </button><br><br><br>
+            <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/1oa2I-ZGTsA?start=38"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+    <section id="sertifikalar" class="content">
+        <h2 style="text-align: center; margin-bottom: 20px;"><u>🎓 Sertifikalar</u></h2>
+        <div class="certificates" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/overlay/1745162063878/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/Java_Belgesi.jpeg" alt="Java Sertifikası" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">Java Programlama – 2024</div>
+            </a>
+            <a href="https://www.linkedin.com/learning/certificates/yyyyyyyyyyyy" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/C1İngilizce.png" alt="C1 Seviye İngilizce" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">C1 Seviye İngilizce – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/details/certifications/1749072255981/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/Javascript.png" alt="Javascript" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">Javascript – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/details/certifications/1749072344093/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+            <img src="image/Python.png" alt="Python" style="width:100%; border-radius: 8px;"/>
+            <div style="margin-top: 8px; font-weight: bold;">Python – 2025</div>
+        </a>
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/details/certifications/1749037401573/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/GitveGithub.png" alt="GitveGithub" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">Git ve Github – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/details/certifications/1749036252751/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/GitLab.png" alt="GitLab" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">GitLab – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/details/certifications/1749036404843/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/React.js.png" alt="React.js" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">React.js – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/details/certifications/1749037596474/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/Unity.png" alt="Unity" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">Unity – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/details/certifications/1749037509744/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/SQL.png" alt="SQL" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">SQL – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/details/certifications/1748906480063/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/IQtesti.png" alt="IQ testi" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">IQ Testi – 2025</div>
+            </a>
+        </div>
+    </section>
+
+    <section id="proje1" class="content">
+        <h2><u>Library Management System</u></h2>
+        <h3><a href="https://github.com/Burak-jv/LibraryManagementSystem" target="_blank">→Linki Burada!!←</a></h3><br><br>
+        <p>Kitap okumayı çok severim. Bu yüzden kitaplarımı daha rahat kullanmak
+            ve kontrol edebilmek için Java dilini kullanarak bu uygulamayı yazdım.</p>
+    </section>
+    <section id="proje2" class="content">
+        <h2><u>Refleks Testi</u></h2>
+        <h3><a href="https://github.com/Burak-jv/refleks-testi-java" target="_blank">→Linki Burada!!←</a></h3><br><br>
+        <p>Java dilini kullanarak geliştirdiğim. Refleks testi oyunum.
+            Java'da yaptığım ilk oyunumdur. Eksiksiz ve hatasızdır. Oyunu oynayan kişilerin yaptığı skora göre not verir.
+            Ayriyeten en iyi skoru aklında tutar. Geçen olursa yeni rekoru bildirir ve oynayan tüm kişilerin listeli bir şekilde
+            Aklında tutar.</p>
+    </section>
+    <section id="proje3" class="content">
+        <h2><u>2D Arcade Oyunu</u></h2>
+        <h3><a href="https://github.com/Burak-jv/vega-game" target="_blank">→Linki Burada!!←</a></h3><br><br>
+        <p>2D Arcade Shooter oyunumdur. Java dilini kullanarak geliştirdim.
+            Vega adını koyduğum anakarakter gittikçe zorlaşan bir alanda düşmanları ile savaşır. Oynamayı en sevdiğim oyunlardan biri olan
+            "Vampire Survivors" oyunundan ilham aldım. Oyunda toplam 4 farklı düşman tipi var. Üçgen , Yuvarlak , Kare ve Boss
+            Yuvarlaklar sadece hareket ederler ama atış yapamazlar. Üçgenler sadece atış yapar ama hareket edemez. Kareler hem hareket
+            hem atış kabiliyetlerini yapabilirler her 50 skorda bir(yanlış hatırlamıyorumdur umarım :D )Boss gelir. Boss yuvarlaktır.
+            ve onu alt edebilmeniz için ona karşı daha fazla atış yapmanız gerekir şanslısınız ki bu canavar çok yavaş. Son olarak oyun gittikçe hızlanıyor.</p>
+    </section>
+    <section id="proje4" class="content">
+        <h2><u>Çok İşleli Hesap Makinesi</u></h2>
+        <h3><a href="https://github.com/Burak-jv/Hesap-Makinesi" target="_blank">→Linki Burada!!←</a></h3><br><br>
+        <p>Merhaba! Bu proje, Python ile geliştirilmiş ve Flask ile desteklenmiş bir hesap makinesi. Ama sıradan bir hesap makinesi değil!
+            Sadece dört işlem yapmakla kalmıyor, aynı zamanda döviz dönüştürücü ve birkaç ekstra
+            matematiksel işlemi de destekliyor.</p>
+        <ul style="list-style-type: disc; text-align: left; max-width: 500px; margin: 0 auto;">
+            <li>Neler Yapabilirsin?</li>
+        </ul>
+        <ul style="list-style-type: square; text-align: left; max-width: 500px; margin: 0 auto;">
+            <li>Toplama, Çıkarma, Çarpma, Bölme</li>
+            <li>Yüzde Hesaplama</li>
+            <li>Üs Alma ve KareköK Hesaplama</li>
+            <li>Logaritma, Sinüs ve Kosinüs Hesaplama</li>
+            <li>Döviz Dönüştürücü (USD, EUR ve diğer para birimlerinden anında TL'ye)</li>
+        </ul>
+    </section>
+    <section id="proje5" class="content">
+        <h2><u>Öğrenci Kayıt Sistemi</u></h2>
+        <h3><a href="https://github.com/Burak-jv/Ogrenci-Kayit-Sistemi" target="_blank">→Linki Burada!!←</a></h3><br><br>
+        <p>Gazi Üniversitesin'de 110 saatlik Java eğitimimi tamamladıktan sonra yüz yüze sınıfta Öğretmen gözetimi
+            altında yaptığım ve eğitimimi en yüksek notla geçtiğim kayıt sistemidir.Bu çalışmamda kullandığım araçlar alttadır.</p>
+    </section>
+    <section id="iletisim" class="content">
+        <h2><u>İletişim</u></h2>
+
+        <div class="contact-cards">
+            <a href="mailto:dagdelenburak51@gmail.com" class="contact-card">
+                📧 <span>Email: dagdelenburak51@gmail.com</span>
+            </a>
+            <a href="tel:+905536428467" class="contact-card">
+                📞 <span>Telefon: +90 553 642 84 67</span>
+            </a>
+        </div>
+
+        <form class="contact-form" action="mailto:dagdelenburak51@gmail.com" method="post" enctype="text/plain">
+            <label for="ad">Adınız</label>
+            <input type="text" id="ad" name="ad" placeholder="Adınızı girin">
+
+            <label for="mesaj">Mesajınız</label>
+            <textarea id="mesaj" name="mesaj" rows="4" placeholder="Mesajınızı yazın…"></textarea>
+
+            <label for="tarih">Tarih</label>
+            <input type="date" id="tarih" name="tarih">
+
+            <button type="submit">Gönder</button>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Burak Dağdelen. Tüm hakları saklıdır.</p>
+</footer>
+
+<script>
+    function showSection(id) {
+        document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+    function toggleSubmenu() {
+        const submenu = document.getElementById('submenu');
+        submenu.classList.toggle('show');
+    }
+</script>
+</body>
+</html>
+
+
+
