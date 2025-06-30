@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
+<!--<p><i>“Sıcakkanlı bir problem çözücü.”</i></p>
+-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +20,9 @@
             height: 100vh;
             overflow: hidden;
             display: flex;
+        }
+        #proje7 {
+            margin-top: 200px;
         }
         nav {
             width: 220px;
@@ -61,6 +66,8 @@
             justify-content: center;
             padding: 40px;
             text-align: center;
+            overflow-y: auto;
+            max-height: 100vh;
         }
         .content {
             display: none;
@@ -290,6 +297,7 @@
         <button onclick="showSection('proje4')">🔢 Hesap Makinesi</button>
         <button onclick="showSection('proje5')">📅 Öğrenci Kayıt Sistemi</button>
         <button onclick="showSection('proje6')">📖 İnteraktif Roman Motoru</button>
+        <button onclick="showSection('proje7')">🕵 Life Tracker</button>
     </div>
     <button onclick="showSection('iletisim')">📬 İletişim</button>
 </nav>
@@ -299,8 +307,7 @@
         <h2><u>Anasayfa</u></h2><br>
         <p>Hoş geldin! Burası Burak'ın kişisel sitesidir.</p>
         <p>Not: Bu alan şu an da yapım aşamasındadır!</p>
-        <button
-                type="button"
+        <button type="button"
                 onclick="window.open('https://www.linkedin.com/in/burak-dağdelen-7546b7346/', '_blank')"
                 style="
     display: block;
@@ -504,6 +511,8 @@
         <ul style="list-style-type: disc; text-align: left; max-width: 500px; margin: 0 auto;">
             <li>Neler Yapabilirsin?</li>
         </ul>
+        <br>
+        <br>
         <ul style="list-style-type: square; text-align: left; max-width: 500px; margin: 0 auto;">
             <li>Toplama, Çıkarma, Çarpma, Bölme</li>
             <li>Yüzde Hesaplama</li>
@@ -536,6 +545,33 @@
             <li>Hikayeleri seçip içeriğini düzenleyebilir</li><br>
         </ul><br>
         <p>Veriler <b>SQLite</b> veritabanında saklanır. Arayüz <b>PyQt5</b> kullanılarak geliştirilmiştir.</p>
+    </section>
+    <section id="proje7" class="content">
+        <h2><u>Life-Tracker</u></h2><br><br>
+        <h3><a href="https://github.com/Burak-jv/burak-life-tracker" target="_blank">→Linki Burada!!←</a></h3><br>
+        <p>Bu uygulama, günlük olarak kişisel gelişim verilerini kaydetmek ve aylık performans raporu oluşturmak için geliştirilmiştir. Veriler kullanıcı arayüzü üzerinden girilir, yerel JSON dosyalarına kaydedilir ve ay sonunda PDF formatında raporlanır.</p><br><br>
+        <ul style="list-style-type: square; max-width: 250px; margin: 0 auto;">
+        <li>📅 Takvim Entegrasyonu</li>
+            <hr>
+            <br>
+            <p>Günlük veri girişi yapılan günler ✓, yapılmamış geçmiş günler ?, gelecek günler X olarak takvimde gösterilir.</p>
+            <br>
+            <li>📝 Günlük Giriş Alanları</li>
+            <hr>
+            <br>
+            <p>Ruh hali, kitap okuma, uyku, su, adım, antrenman, kodlama süresi, müzik, proje, vitamin, yalnızlık vb. alanlara dair 14 adet soru içerir.</p>
+            <br>
+            <li>📊 Aylık PDF Raporu Oluşturma</li>
+            <hr>
+            <br>
+            <p>Toplam sayfa, kod süresi, adım, moral ortalaması gibi veriler hesaplanır.Bir motivasyon cümlesi ve grafikle birlikte PDF oluşturulur.</p>
+            <br>
+            <li>📁 Veri Kaydı</li>
+            <hr>
+            <br>
+            <p>Veriler "data" klasöründe aylık JSON dosyalarına kaydedilir. Raporlar "reports" klasörüne kaydedilir.</p>
+        </ul>
+        <br>
     </section>
     <section id="iletisim" class="content">
         <h2><u>İletişim</u></h2>
