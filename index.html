@@ -13,6 +13,258 @@
             padding: 0;
             box-sizing: border-box;
         }
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.4s ease;
+            box-sizing: border-box;
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            transform-origin: center;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .linkedin {
+            background-color: #0077B5;
+            color: white;
+        }
+
+        .linkedin:hover {
+            background-color: #005582;
+        }
+
+        .github {
+            background-color: #24292e;
+            color: white;
+        }
+
+        .github:hover {
+            background-color: #000000;
+        }
+
+        .download {
+            background-color: #8e44ad;
+            color: white;
+            text-decoration: none;
+        }
+
+        .download:hover {
+            background-color: #6c3483;
+        }
+        .code-container {
+            font-family: 'Courier New', monospace;
+            width: 480px;
+            background-color: #0d0d0d;
+            color: #f1f1f1;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 50px auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .code-block {
+            width: 100%;
+            height: auto;
+            white-space: pre-wrap;
+            color: #ccc;
+            font-size: 16px;
+            text-align: left;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .code-output {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            min-height: 30px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 20px;
+            background-color: #fff;
+            margin-left: 2px;
+            animation: blink 0.8s infinite;
+            vertical-align: bottom;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOutScreen 1s ease 3.5s forwards;
+        }
+
+        #intro-logo {
+            width: 60px;
+            opacity: 0;
+            transform: scale(0.05);
+            animation: logoZoomGlow 3s ease forwards;
+        }
+
+        @keyframes logoZoomGlow {
+            0% {
+                opacity: 0;
+                transform: scale(0.05);
+                filter: brightness(0.2);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(3.5);
+                filter: brightness(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(5.5);
+                filter: drop-shadow(0 0 15px rgba(255,255,255,0.4)) brightness(1.6);
+            }
+        }
+
+        @keyframes fadeOutScreen {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        .profile-box {
+                background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255,255,255,0.18);
+                border-radius: 20px;
+                padding: 30px 40px;
+                max-width: 850px;
+                margin: 40px auto;
+                color: #1f2937;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 16px;
+                line-height: 1.8;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+                transition: all 0.4s ease;
+                transform: scale(1);
+            }
+        .tech-box {
+            background: linear-gradient(120deg, #ecf0f3, #dfe4ea);
+            border: 2px solid rgba(0, 0, 0, 0.05);
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px 35px;
+            margin: 50px auto;
+            max-width: 700px;
+            transition: all 0.6s ease;
+            transform: scale(1);
+        }
+
+        .tech-box:hover {
+            transform: scale(1.03) translateY(-4px);
+            background: linear-gradient(120deg, #e0eafc, #cfdef3);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+        .vision-box-alt {
+            background: linear-gradient(135deg, #fef9f4, #fdf2e9);
+            border-radius: 16px;
+            padding: 35px 40px;
+            margin: 60px auto;
+            max-width: 800px;
+            border: 1px solid #fcd9b6;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 16.5px;
+            line-height: 1.8;
+            color: #3b3b3b;
+            transition: all 0.5s ease;
+            transform: scale(1);
+        }
+        .animated-title:hover {
+            text-shadow: 0 0 8px rgba(236, 72, 153, 0.4);
+        }
+        .vision-box-alt:hover {
+            transform: scale(1.02) translateY(-5px);
+            background: linear-gradient(135deg, #fff6eb, #fae1c1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .profile-box:hover {
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+                transform: scale(1.02) translateY(-5px);
+                background: linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.25));
+            }
+
+            .profile-box a {
+                color: #4f46e5;
+                font-weight: bold;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .profile-box a:hover {
+                color: #7c3aed;
+                text-decoration: underline;
+            }
+        .animated-title {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 40px;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(90deg, #4f46e5, #9333ea, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeSlide 2s ease forwards;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            opacity: 0;
+        }
+
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #d9dee8, #aab8cf);
@@ -21,8 +273,31 @@
             overflow: hidden;
             display: flex;
         }
-        #proje7 {
-            margin-top: 200px;
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden !important;
+        }
+        .project-box {
+            max-width: 700px;
+            margin: 80px auto;
+            padding: 40px;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+        .project-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #d4fc79, #96e6a1);
+        }
+        .project-description {
+            font-size: 1.05em;
+            color: #444;
+            margin-top: 20px;
+            line-height: 1.6;
         }
         nav {
             width: 220px;
@@ -93,19 +368,28 @@
             margin-bottom: 4px;
         }
         .skill-bar {
+            width: 100%;
             height: 20px;
-            background: #cbd5e1;
+            background-color: #ddd;
             border-radius: 10px;
             overflow: hidden;
+            margin-bottom: 15px;
         }
+
         .skill-bar-fill {
             height: 100%;
-            background: #3b82f6;
             width: 0;
-            animation: fillBar 1.5s forwards;
+            background-color: #3b82f6;
+            transition: width 1s ease;
+            border-radius: 10px;
         }
-        @keyframes fillBar {
-            to { width: var(--width); }
+        @keyframes fillAnimation {
+            from {
+                width: 0;
+            }
+            to {
+                width: var(--width);
+            }
         }
         footer {
             position: fixed;
@@ -227,47 +511,51 @@
                 align-items: center;
             }
         }
-        #sertifikalar h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .certificate-gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
         .certificates {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
-            max-height: 400px;
-            overflow-y: auto;
+            padding: 20px;
+            border-radius: 16px;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
         }
-        .certificate-item img {
+
+        .certificate-item {
             display: block;
-            width: 100%;
-            height: auto;
-        }
-        .cert-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px;
-            background: rgba(0,0,0,0.6);
-            color: #fff;
-            font-size: 14px;
+            width: 250px;
             text-align: center;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: transform 0.3s, opacity 0.3s;
+            text-decoration: none;
+            color: inherit;
+            background-color: white;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
         }
-        .certificate-item:hover .cert-overlay {
-            opacity: 1;
-            transform: translateY(0);
+
+        .certificate-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
+
+        .certificate-item img {
+            width: 100%;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-item div {
+            margin-top: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        #sertifikalar {
+            padding-top: 900px;
+            box-sizing: border-box;
+            scroll-margin-top: 80px;
+        }
+
         @media (max-width: 600px) {
             .certificate-gallery {
                 flex-direction: column;
@@ -285,49 +573,42 @@
     </style>
 </head>
 <body>
+<div id="intro-screen">
+    <img src="image/İmzam2.png" alt="Burak Signature" id="intro-logo">
+</div>
 <nav>
-    <button onclick="showSection('anasayfa')">🏠 Anasayfa</button>
-    <button onclick="showSection('hakkimda')">👤 Hakkımda</button>
-    <button onclick="showSection('sertifikalar')">🎓 Sertifikalar</button>
-    <button onclick="toggleSubmenu()">💼 Projelerim</button>
+    <button onclick="showSection('anasayfa')">🏠 Main Page</button>
+    <button onclick="showSection('hakkimda')">👤 About Me</button>
+    <button onclick="showSection('sertifikalar')">🎓 Certificates</button>
+    <button onclick="toggleSubmenu()">💼 My Projects</button>
     <div class="submenu" id="submenu">
         <button onclick="showSection('proje1')">📚 Library System</button>
-        <button onclick="showSection('proje2')">⚡ Refleks Testi</button>
-        <button onclick="showSection('proje3')">🎮 2D Oyun</button>
-        <button onclick="showSection('proje4')">🔢 Hesap Makinesi</button>
-        <button onclick="showSection('proje5')">📅 Öğrenci Kayıt Sistemi</button>
-        <button onclick="showSection('proje6')">📖 İnteraktif Roman Motoru</button>
+        <button onclick="showSection('proje2')">⚡ Reflex Test</button>
+        <button onclick="showSection('proje3')">🎮 2D Game</button>
+        <button onclick="showSection('proje4')">🔢 Advanced Calculator</button>
+        <button onclick="showSection('proje5')">📅 Student Registration System</button>
+        <button onclick="showSection('proje6')">📖 Interactive Novel Engine</button>
         <button onclick="showSection('proje7')">🕵 Life Tracker</button>
     </div>
-    <button onclick="showSection('iletisim')">📬 İletişim</button>
+    <button onclick="showSection('iletisim')">📬 Contact</button>
 </nav>
 
 <main>
     <section id="anasayfa" class="content active">
-        <h2><u>Anasayfa</u></h2><br>
-        <p>Hoş geldin! Burası Burak'ın kişisel sitesidir.</p>
-        <p>Not: Bu alan şu an da yapım aşamasındadır!</p>
-        <button type="button"
-                onclick="window.open('https://www.linkedin.com/in/burak-dağdelen-7546b7346/', '_blank')"
-                style="
-    display: block;
-    width: 100px;
-    height: 40px;
-    margin: 50px auto 0;
-    background: #0077b5;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 1s ease;
-  "
-                onmouseover="this.style.background='#005582'"
-                onmouseout="this.style.background='#0077b5'"
-        >
-            LinkedIn
-        </button>
-
+        <h2 class="animated-title">Main Page</h2>
+        <div class="code-container">
+            <div id="code-block" class="code-block"></div>
+            <div id="code-output" class="code-output"></div>
+        </div>
+        <div class="button-container">
+            <button class="btn linkedin" onclick="window.open('https://www.linkedin.com/in/yalçın-burak-dağdelen-7546b7346', '_blank')">
+                LinkedIn
+            </button>
+            <button class="btn github" onclick="window.open('https://github.com/Burak-jv', '_blank')">
+                GitHub
+            </button>
+            <a href="Burak.pdf" download class="btn download">Download CV</a>
+        </div>
     </section>
     <section id="hakkimda" class="content" style="
   padding: 20px;
@@ -339,22 +620,23 @@
   border-radius: 8px;
 ">
 
-    <h2 style="text-align: center; margin-bottom: 20px;"><u>Hakkımda</u></h2>
+        <h2 class="animated-title">About Me</h2>
         <div style="text-align: left;">
-            <p>Merhaba ben Burak, size kendimi bu bölümde <b>iyice</b> tanıtacağım.</p>
-            <p>Öncelikle benim akademik hayatıma girişim <b>biraz sıkıntılı olmuştu.</b></p>
-            <p><b>Bolu İzzet Baysal Üniversitesi</b> Elektrik Elektronik Mühendisliğini birazcık aile zoru ile okuyordum.</p>
-            <p>2. sınıfa gelince arkadaşlarımdan biri <b>Anadolu Üniversitesi'nde</b> açıktan üniversite sınavına girmeden okuyabileceğimi söyledi.</p>
-            <p>Ben de liseden beri <b>yazılıma meraklıydım</b> ama bir türlü gayret gösterememiş, bir türlü o alana atılamamıştım.</p>
-            <p>Sonrasında açıktan <b>Bilgisayar Programcılığını</b> arkadaşım aracılığı ile yazdım.</p><br>
-            <p>Bir yerden sonra kendi vizelerime ve finallerime çalışmayı kesip <b>Bilgisayar Programcılığı'nın</b> sınavlarına çalışmaya başlamıştım.</p><br>
-            <p>Ve bir süre sonra bu alanda <b>daha başarılı</b> olduğumu fark ettim ve ailemle de konuşup okulu bırakıp bu bölümden devam etmeye başladım.</p>
-            <p>Bir süre sonra <b>Gazi Üniversitesi'nin</b> Beltek projesi altında genç öğrencilere <b>Java ve Python</b> eğitimi verdiklerini öğrendim ve hemen kaydoldum.</p><br>
-            <p><b>110 saatlik Java eğitimimi Gazi Üniversitesin'de yüz yüze</b> tamamladıktan sonra <a href="https://avesis.gazi.edu.tr/stoklu" target="_blank"><b>Sayın Sinan Toklu</b></a> gözetimi altında 5 saatlik Java sınavına girdim.</p><br>
-            <p>Ve bu sınavdan başarı ile çıktım. Sınavı geçmemi sağlayan kodu hem projelerimden hem de <a href="https://github.com/Burak-jv/Ogrenci-Kayit-Sistemi" target="_parent">bu link sayesinde görebilirsiniz.</a></p><br>
-            <p>Şu an da yine <b>Gazi Üniversitesi'nde <a href="https://avesis.gazi.edu.tr/uozcan" target="_blank">Sayın Uğur Özcan</a> ile Python eğitimime devam ediyorum.</b> 2025 Haziran ayının sonunda onunda eğitimini tamamlamış olacağım.</p><br><br>
-                <h4>🧑🏻‍💻<u>Bildiğim Diller</u></h4><br>
-            <div class="skill-bar-container" style="margin-top:30px; max-width:600px; margin-left:auto; margin-right:auto; text-align:left;">
+            <div class="profile-box">
+                <p>Hello, I'm Burak. In this section, I’d like to introduce myself in detail.</p>
+                <p>My academic journey started off a bit rocky. I was initially studying <b>Electrical and Electronics Engineering</b> at <b>Bolu İzzet Baysal University</b>, mostly due to family expectations.</p>
+                <p>During my second year, a friend told me I could enroll in a different university program without taking the central exam. That’s when I discovered <b>Anadolu University’s</b> Open Education Faculty.</p>
+                <p>I've always been passionate about <b>software development</b> since high school, but I never had the courage to pursue it seriously—until then.</p>
+                <p>Encouraged by my friend, I enrolled in the <b>Computer Programming</b> program. Eventually, I found myself focusing more on those courses than my engineering classes. I realized I was genuinely more successful in this field, so I decided to officially switch programs after discussing it with my family.</p>
+                <p>Later, I learned about the <b>Beltek Project</b> by <b>Gazi University</b>, which provides free technical training to young learners. I enrolled immediately and completed a <b>110-hour face-to-face Java course</b>.</p>
+                <p>After finishing the course, I took a 5-hour final exam under the supervision of <a href="https://avesis.gazi.edu.tr/stoklu" target="_blank">Mr. Sinan Toklu</a> and successfully passed. You can see the code that helped me pass in my project section or directly via <a href="https://github.com/Burak-jv/Ogrenci-Kayit-Sistemi" target="_blank">this GitHub link</a>.</p>
+                <p>Later on, I also enrolled in the <b>Python course at Gazi University</b>, led by <a href="https://avesis.gazi.edu.tr/uozcan" target="_blank">Mr. Uğur Özcan</a>, and successfully completed it by the end of July 2025.</p>
+            </div>
+
+            <br><br>
+            <div class="tech-box">
+                <h3 style="margin-bottom: 25px;">👨‍💻 Languages I Know</h3>
+                <div class="skill-bar-container" style="margin-top:30px; max-width:600px; margin-left:auto; margin-right:auto; text-align:left;">
                 <div class="skill">
                     <div class="skill-name">Python</div>
                     <div class="skill-bar"><div class="skill-bar-fill" style="--width:90%;"></div></div>
@@ -381,63 +663,26 @@
                 </div>
             </div>
         </div>
-            <br><br>
-            <ol>
-                <h4>💻<u>Frontend ve Backend'de kullanabildiğim dil ve araçlar</u></h4>
-                <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
-                <li><strong>Backend:</strong> Java, Python, Flask</li>
-            </ol>
-            <br><br>
-            <ol>
-                <li>
-                    <strong>🗄️<u>Veritabanı</u>:</strong> <em>MySQL, SQLite, DB</em> kullanarak veri işlemleri yaptım.
-                </li>
-            </ol>
-            <p>Akademik serüvenim hakkında bu kadar konuştuğumuz yeter sanırsam :D hadi birazda Kimmiş bu <b>Yalçın Burak Dağdelen</b> onu konuşalım; </p><br><br>
-            <p><strong>24/07/2003</strong> doğumluyum. 16 yaşımda <b>vücut geliştirme</b> ve <b>yüzme sporuna</b> ilgim çok arttı ve bu alanlarda hızla gelişmeye başladım.</p><br>
-            <p>Hatta (belki bunu yapmamam gerekiyor ama :D) mizah ve vücut geliştirmeyi birbirine karıştırdığım bir youtube kanalı bile açtım.</p>
-            <p>Toplam <b>500 abone</b> ve <b>80 bin civarı izlenmeyi</b> yakaladım. Fakat videolarda bulunan eski bir arkadaşım yüzünden çoğu videomu kaldırdım.</p><br>
-            <p>Ve bunun yüzünden youtube beni biraz az önermeye başlayınca ben de video çekmeyi bıraktım. Şu an da youtube bazı videolarım hala mevcut ama bir <b>anı</b> olarak.</p>
-            <p>Bazı videolarda <b>küfür ve uygunsuz hareketler</b> bulunabilir. Bu yüzden bu tarz şeylerden hoşlanmıyorsanız hiç bakmanıza gerek yok ama eğer isterseniz...</p><br>
-            <p>Altta <b>4 yıl önce</b> çektiğim gömülü youtube videom ile kanalımın linkini bırakıyorum.</p>
-        <button
-                type="button"
-                onclick="window.open('https://www.youtube.com/@burakdagdelen2304','_blank')"
-                style="
-    display: block;
-    width: 200px;
-    height: 40px;
-    margin: 20px auto 0;
-    background: #FF0000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 1s ease;
-  "
-                onmouseover="this.style.background='#CC0000';"
-                onmouseout="(function(el){setTimeout(()=>el.style.background='#FF0000',1000)})(this);"
-        >
-            YouTube
-        </button><br><br><br>
-            <iframe
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/1oa2I-ZGTsA?start=38"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-            </iframe>
+            <div class="vision-box-alt">
+                <h3>🚀 My Journey</h3>
+                <p>
+                    I made a bold decision to step away from the conventional path. Leaving Electrical and Electronics Engineering in my second year, I chose to pursue software development — a field that, at first, felt overwhelming. But as I began to grasp how machines communicate, and explored new technologies, I discovered that coding isn’t about memorization — it’s an adventure.
+                </p>
+                <p>
+                    Writing code is like searching for treasure on an unknown island — filled with obstacles, constant errors, and moments of frustration. But if you keep searching, each challenge brings you closer to building something meaningful. For me, coding became more than a skill; it became a way to think, solve, and create.
+                </p>
+                <p>
+                    I changed my career for this path, and every day I work hard to ensure I never look back and say “I wish I hadn’t.” I'm fully committed to evolving, growing, and building things that matter — one line of code at a time.
+                </p>
+            </div>
         </div>
     </section>
     <section id="sertifikalar" class="content">
-        <h2 style="text-align: center; margin-bottom: 20px;"><u>🎓 Sertifikalar</u></h2>
+        <h2 class="animated-title">My Certificates</h2>
         <div class="certificates" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
             <a href="https://www.linkedin.com/in/burak-dağdelen-7546b7346/overlay/1745162063878/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
                 <img src="image/Java_Belgesi.jpeg" alt="Java Sertifikası" style="width:100%; border-radius: 8px;"/>
-                <div style="margin-top: 8px; font-weight: bold;">Java Programlama – 2024</div>
+                <div style="margin-top: 8px; font-weight: bold;">Java Programming – 2024</div>
             </a>
             <a href="https://www.linkedin.com/learning/certificates/yyyyyyyyyyyy" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
                 <img src="image/C1İngilizce.png" alt="C1 Seviye İngilizce" style="width:100%; border-radius: 8px;"/>
@@ -475,127 +720,194 @@
                 <img src="image/IQtesti.png" alt="IQ testi" style="width:100%; border-radius: 8px;"/>
                 <div style="margin-top: 8px; font-weight: bold;">IQ Testi – 2025</div>
             </a>
+            <a href="https://www.linkedin.com/in/yalçın-burak-dağdelen-7546b7346/details/certifications/1753803640451/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/Python_ön.jpeg" alt="Python Programming" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">Python Programming – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/yalçın-burak-dağdelen-7546b7346/details/certifications/1753850468396/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/img_1.png" alt="Unity game development" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">Unity game development – 2025</div>
+            </a>
+            <a href="https://www.linkedin.com/in/yalçın-burak-dağdelen-7546b7346/details/certifications/1753849886344/single-media-viewer/?profileId=ACoAAFaZ1nABcWGtrZKLex0jVm3Y5yWtKjgvrQU" target="_blank" class="certificate-item" style="display: block; width: 250px; text-align: center; text-decoration: none; color: inherit;">
+                <img src="image/img.png" alt="Community learning practices with Python" style="width:100%; border-radius: 8px;"/>
+                <div style="margin-top: 8px; font-weight: bold;">Community learning practices with Python – 2025</div>
+            </a>
         </div>
     </section>
-
     <section id="proje1" class="content">
-        <h2><u>Library Management System</u></h2>
-        <h3><a href="https://github.com/Burak-jv/LibraryManagementSystem" target="_blank">→Linki Burada!!←</a></h3><br><br>
-        <p>Kitap okumayı çok severim. Bu yüzden kitaplarımı daha rahat kullanmak
-            ve kontrol edebilmek için Java dilini kullanarak bu uygulamayı yazdım.</p>
+        <div class="project-box">
+            <h2 class="project-title"><u>Library Management System</u></h2>
+            <br>
+            <h3 class="project-link">
+                <a href="https://github.com/Burak-jv/LibraryManagementSystem" target="_blank">
+                    → Click Here to View the Project ←
+                </a>
+            </h3>
+            <p class="project-description">
+                I’m passionate about reading. To manage and organize my books more efficiently, I developed this system using Java. It provides a practical way to keep track of borrowed and available books.
+            </p>
+        </div>
     </section>
     <section id="proje2" class="content">
-        <h2><u>Refleks Testi</u></h2>
-        <h3><a href="https://github.com/Burak-jv/refleks-testi-java" target="_blank">→Linki Burada!!←</a></h3><br><br>
-        <p>Java dilini kullanarak geliştirdiğim. Refleks testi oyunum.
-            Java'da yaptığım ilk oyunumdur. Eksiksiz ve hatasızdır. Oyunu oynayan kişilerin yaptığı skora göre not verir.
-            Ayriyeten en iyi skoru aklında tutar. Geçen olursa yeni rekoru bildirir ve oynayan tüm kişilerin listeli bir şekilde
-            Aklında tutar.</p>
+        <div class="project-box">
+            <h2><u>Reflex Test Game</u></h2>
+            <br>
+            <h3>
+                <a href="https://github.com/Burak-jv/refleks-testi-java" target="_blank">
+                    → Click Here to View the Project ←
+                </a>
+            </h3>
+            <p class="project-description">
+                This is the first game I developed using Java. It’s a reflex-based test game that works flawlessly and without errors.
+                The game does not assign a grade but keeps track of players’ scores. It memorizes the highest score and alerts the player when a new record is achieved.
+                It also stores all player scores in a ranked list format.
+            </p>
+        </div>
     </section>
     <section id="proje3" class="content">
-        <h2><u>2D Arcade Oyunu</u></h2>
-        <h3><a href="https://github.com/Burak-jv/vega-game" target="_blank">→Linki Burada!!←</a></h3><br><br>
-        <p>2D Arcade Shooter oyunumdur. Java dilini kullanarak geliştirdim.
-            Vega adını koyduğum anakarakter gittikçe zorlaşan bir alanda düşmanları ile savaşır. Oynamayı en sevdiğim oyunlardan biri olan
-            "Vampire Survivors" oyunundan ilham aldım. Oyunda toplam 4 farklı düşman tipi var. Üçgen , Yuvarlak , Kare ve Boss
-            Yuvarlaklar sadece hareket ederler ama atış yapamazlar. Üçgenler sadece atış yapar ama hareket edemez. Kareler hem hareket
-            hem atış kabiliyetlerini yapabilirler her 50 skorda bir(yanlış hatırlamıyorumdur umarım :D )Boss gelir. Boss yuvarlaktır.
-            ve onu alt edebilmeniz için ona karşı daha fazla atış yapmanız gerekir şanslısınız ki bu canavar çok yavaş. Son olarak oyun gittikçe hızlanıyor.</p>
+        <div class="project-box">
+            <h2 class="project-title"><u>2D Arcade Shooter Game</u></h2>
+            <br>
+            <h3 class="project-link">
+                <a href="https://github.com/Burak-jv/vega-game" target="_blank">
+                    → Click Here to View the Project ←
+                </a>
+            </h3>
+            <p class="project-description">
+                This is a 2D arcade-style shooter game that I developed using Java.
+                The main character, named Vega, fights increasingly difficult waves of enemies.
+                The game was inspired by one of my favorite games, <i>Vampire Survivors</i>.
+                There are four types of enemies: Triangles, Circles, Squares, and Boss Circles.
+                - Circles move but don’t shoot.
+                - Triangles shoot but don’t move.
+                - Squares both move and shoot.
+                Every 50 points, a Boss appears (I hope I remember correctly 😄).
+                The Boss is a large circle that requires more hits to defeat — fortunately, it’s very slow.
+                As the game progresses, its pace accelerates for a more intense challenge.
+            </p>
+        </div>
     </section>
     <section id="proje4" class="content">
-        <h2><u>Çok İşleli Hesap Makinesi</u></h2>
-        <h3><a href="https://github.com/Burak-jv/Hesap-Makinesi" target="_blank">→Linki Burada!!←</a></h3><br><br>
-        <p>Merhaba! Bu proje, Python ile geliştirilmiş ve Flask ile desteklenmiş bir hesap makinesi. Ama sıradan bir hesap makinesi değil!
-            Sadece dört işlem yapmakla kalmıyor, aynı zamanda döviz dönüştürücü ve birkaç ekstra
-            matematiksel işlemi de destekliyor.</p>
-        <ul style="list-style-type: disc; text-align: left; max-width: 500px; margin: 0 auto;">
-            <li>Neler Yapabilirsin?</li>
-        </ul>
-        <br>
-        <br>
-        <ul style="list-style-type: square; text-align: left; max-width: 500px; margin: 0 auto;">
-            <li>Toplama, Çıkarma, Çarpma, Bölme</li>
-            <li>Yüzde Hesaplama</li>
-            <li>Üs Alma ve KareköK Hesaplama</li>
-            <li>Logaritma, Sinüs ve Kosinüs Hesaplama</li>
-            <li>Döviz Dönüştürücü (USD, EUR ve diğer para birimlerinden anında TL'ye)</li>
-        </ul>
+        <div class="project-box">
+            <h2 class="project-title"><u>Advanced Multi-Function Calculator</u></h2>
+            <br>
+            <h3 class="project-link">
+                <a href="https://github.com/Burak-jv/Hesap-Makinesi" target="_blank">
+                    → Click Here to View the Project ←
+                </a>
+            </h3>
+            <p class="project-description">
+                This project is a powerful calculator built with Python and enhanced using the Flask framework.
+                It's far from a basic calculator — it not only performs standard arithmetic operations but also supports currency conversion and additional advanced mathematical functions.
+            </p>
+            <ul style="list-style-type: disc; text-align: left; max-width: 500px; margin: 10px auto; font-size: 1.05em; color: #444;">
+                <li>What Can You Do With It?</li>
+            </ul>
+            <ul style="list-style-type: square; text-align: left; max-width: 500px; margin: 0 auto; font-size: 1.05em; color: #444;">
+                <li>Addition, Subtraction, Multiplication, Division</li>
+                <li>Percentage Calculation</li>
+                <li>Exponentiation and Square Root</li>
+                <li>Logarithmic, Sine, and Cosine Functions</li>
+                <li>Currency Converter (Instantly convert USD, EUR and others to TRY)</li>
+            </ul>
+        </div>
     </section>
     <section id="proje5" class="content">
-        <h2><u>Öğrenci Kayıt Sistemi</u></h2>
-        <h3><a href="https://github.com/Burak-jv/Ogrenci-Kayit-Sistemi" target="_blank">→Linki Burada!!←</a></h3><br><br>
-        <p>Gazi Üniversitesin'de 110 saatlik Java eğitimimi tamamladıktan sonra yüz yüze sınıfta Öğretmen gözetimi
-            altında yaptığım ve eğitimimi en yüksek notla geçtiğim kayıt sistemidir.Bu çalışmamda kullandığım araçlar alttadır.</p><br>
-        <ul style="list-style-type: square; text-align: justify; max-width: 250px; margin: 0 auto;">
-             <li>MySQL</li>
-             <li>Java</li>
-             <li>Primeface</li>
-             <li>XHtml</li>
-         </ul>
+        <div class="project-box">
+            <h2 class="project-title"><u>Student Registration System</u></h2>
+            <br>
+            <h3 class="project-link">
+                <a href="https://github.com/Burak-jv/Ogrenci-Kayit-Sistemi" target="_blank">
+                    → Click Here to View the Project ←
+                </a>
+            </h3>
+            <p class="project-description">
+                This student registration system was developed as part of a 110-hour Java course at Gazi University.
+                After completing the training with the highest grade, I implemented this project under the supervision of an instructor in a face-to-face classroom environment.
+                The technologies used in this project are listed below:
+            </p>
+            <ul style="list-style-type: square; text-align: left; max-width: 400px; margin: 0 auto; font-size: 1.05em; color: #444;">
+                <li>MySQL</li>
+                <li>Java</li>
+                <li>PrimeFaces</li>
+                <li>XHTML</li>
+            </ul>
+        </div>
     </section>
     <section id="proje6" class="content">
-    <h2><u>İnteraktif-Roman-Motoru</u></h2><br><br>
-    <h3><a href="https://github.com/Burak-jv/interaktif-roman-motoru" target="_blank">→Linki Burada!!←</a></h3><br>
-    <p>İnteraktif Roman Editörü
-        Bu proje <b>python</b> ile geliştirilmiştir. Kullanıcıların kendi seçmeli hikâyelerini (choose-your-own-adventure) oluşturabileceği bir masaüstü uygulamasıdır.<br>Kullanıcılar:</p><br>
-        <ul style="list-style-type: square; max-width: 250px; margin: 0 auto;">
-            <li>Yeni hikayeler oluşturabilir</li><br>
-            <li>Her hikayeye ait bölümler ve seçenekler ekleyebilir</li><br>
-            <li>Mevcut hikayeleri güncelleyip silebilir</li><br>
-            <li>Hikayeleri seçip içeriğini düzenleyebilir</li><br>
-        </ul><br>
-        <p>Veriler <b>SQLite</b> veritabanında saklanır. Arayüz <b>PyQt5</b> kullanılarak geliştirilmiştir.</p>
+        <div class="project-box">
+            <br>
+            <h2 class="project-title"><u>Interactive Novel Engine</u></h2>
+            <br>
+            <h3 class="project-link">
+                <a href="https://github.com/Burak-jv/interaktif-roman-motoru" target="_blank">
+                    → Click Here to View the Project ←
+                </a>
+            </h3>
+
+            <p class="project-description">
+                This project is a Python-based desktop application that allows users to create their own <i>choose-your-own-adventure</i> style interactive stories.
+                It's designed as a lightweight story editor where users can easily manage and structure narrative paths.
+            </p>
+
+            <ul style="list-style-type: square; text-align: left; max-width: 500px; margin: 20px auto; font-size: 1.05em; color: #444;">
+                <li>Create new interactive stories</li>
+                <li>Add chapters and choices for each story</li>
+                <li>Update or delete existing stories</li>
+                <li>Edit story content and paths</li>
+            </ul>
+
+            <p class="project-description">
+                The data is stored using <b>SQLite</b>, and the graphical interface is built with <b>PyQt5</b>.
+            </p>
+        </div>
     </section>
     <section id="proje7" class="content">
-        <h2><u>Life-Tracker</u></h2><br><br>
-        <h3><a href="https://github.com/Burak-jv/burak-life-tracker" target="_blank">→Linki Burada!!←</a></h3><br>
-        <p>Bu uygulama, günlük olarak kişisel gelişim verilerini kaydetmek ve aylık performans raporu oluşturmak için geliştirilmiştir. Veriler kullanıcı arayüzü üzerinden girilir, yerel JSON dosyalarına kaydedilir ve ay sonunda PDF formatında raporlanır.</p><br><br>
-        <ul style="list-style-type: square; max-width: 250px; margin: 0 auto;">
-        <li>📅 Takvim Entegrasyonu</li>
-            <hr>
+        <div class="project-box">
             <br>
-            <p>Günlük veri girişi yapılan günler ✓, yapılmamış geçmiş günler ?, gelecek günler X olarak takvimde gösterilir.</p>
+            <h2 class="project-title"><u>Life Tracker</u></h2>
             <br>
-            <li>📝 Günlük Giriş Alanları</li>
-            <hr>
-            <br>
-            <p>Ruh hali, kitap okuma, uyku, su, adım, antrenman, kodlama süresi, müzik, proje, vitamin, yalnızlık vb. alanlara dair 14 adet soru içerir.</p>
-            <br>
-            <li>📊 Aylık PDF Raporu Oluşturma</li>
-            <hr>
-            <br>
-            <p>Toplam sayfa, kod süresi, adım, moral ortalaması gibi veriler hesaplanır.Bir motivasyon cümlesi ve grafikle birlikte PDF oluşturulur.</p>
-            <br>
-            <li>📁 Veri Kaydı</li>
-            <hr>
-            <br>
-            <p>Veriler "data" klasöründe aylık JSON dosyalarına kaydedilir. Raporlar "reports" klasörüne kaydedilir.</p>
-        </ul>
-        <br>
+            <h3 class="project-link">
+                <a href="https://github.com/Burak-jv/burak-life-tracker" target="_blank">
+                    → Click Here to View the Project ←
+                </a>
+            </h3>
+
+            <p class="project-description">
+                This is a Python-based application developed to record daily personal development data and generate a monthly performance report.
+                Users can input their data via a simple GUI, which is saved to JSON files and later converted to a PDF report at the end of the month.
+            </p>
+
+            <ul style="list-style-type: square; text-align: left; max-width: 600px; margin: 20px auto; font-size: 1.05em; color: #444;">
+                <li>📅 <b>Calendar Integration:</b> Days with entries show ✓, missed past days show ?, and future days are marked X.</li><br>
+                <li>📝 <b>Daily Input Fields:</b> Includes 14 questions covering mood, reading, sleep, water intake, steps, workout, coding hours, music, projects, vitamins, loneliness, and more.</li><br>
+                <li>📊 <b>Monthly PDF Report:</b> Summarizes total pages, steps, coding time, mood average, and adds a motivational quote & graph.</li><br>
+                <li>📁 <b>Data Storage:</b> Entries are saved as monthly JSON files in a "data" folder. Reports are saved as PDFs in a "reports" folder.</li>
+            </ul>
+        </div>
     </section>
     <section id="iletisim" class="content">
-        <h2><u>İletişim</u></h2>
+        <h2 class="animated-title">📬 Contact</h2>
 
         <div class="contact-cards">
             <a href="mailto:dagdelenburak51@gmail.com" class="contact-card">
                 📧 <span>Email: dagdelenburak51@gmail.com</span>
             </a>
             <a href="tel:+905536428467" class="contact-card">
-                📞 <span>Telefon: +90 553 642 84 67</span>
+                📞 <span>Phone: +90 553 642 84 67</span>
             </a>
         </div>
-
         <form class="contact-form" action="mailto:dagdelenburak51@gmail.com" method="post" enctype="text/plain">
-            <label for="ad">Adınız</label>
-            <input type="text" id="ad" name="ad" placeholder="Adınızı girin">
+            <label for="ad">Your Name</label>
+            <input type="text" id="ad" name="ad" placeholder="Enter your name">
 
-            <label for="mesaj">Mesajınız</label>
-            <textarea id="mesaj" name="mesaj" rows="4" placeholder="Mesajınızı yazın…"></textarea>
+            <label for="mesaj">Your Message</label>
+            <textarea id="mesaj" name="mesaj" rows="4" placeholder="Write your message..."></textarea>
 
-            <label for="tarih">Tarih</label>
+            <label for="tarih">Date</label>
             <input type="date" id="tarih" name="tarih">
 
-            <button type="submit">Gönder</button>
+            <button type="submit">Send</button>
         </form>
     </section>
 </main>
@@ -603,7 +915,13 @@
 <footer>
     <p>&copy; 2025 Burak Dağdelen. Tüm hakları saklıdır.</p>
 </footer>
-
+<script>
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.getElementById("intro-screen").style.display = "none";
+        }, 4000);
+    });
+</script>
 <script>
     function showSection(id) {
         document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
@@ -613,6 +931,90 @@
         const submenu = document.getElementById('submenu');
         submenu.classList.toggle('show');
     }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const codeLines = [
+            '01 def welcome():',
+            '02     print("Hello, visitor!")',
+            '03',
+            '04 welcome()',
+            '05 print("Welcome to My Website")'
+        ];
+
+        const codeBlock = document.getElementById("code-block");
+        const outputBlock = document.getElementById("code-output");
+        const outputText = "Welcome to My Website";
+
+        let lineIndex = 0;
+        let charIndex = 0;
+
+        function typeCode() {
+            if (lineIndex < codeLines.length) {
+                const line = codeLines[lineIndex];
+                const currentChar = line.charAt(charIndex);
+                codeBlock.innerHTML += currentChar;
+                charIndex++;
+
+                if (charIndex >= line.length) {
+                    codeBlock.innerHTML += '\n';
+                    lineIndex++;
+                    charIndex = 0;
+                }
+
+                setTimeout(typeCode, 40);
+            } else {
+                typeOutput();
+            }
+        }
+
+        function typeOutput() {
+            outputBlock.innerHTML = "";
+            let i = 0;
+
+            const cursor = document.createElement("span");
+            cursor.className = "cursor";
+            outputBlock.appendChild(cursor);
+
+            function showText() {
+                if (i < outputText.length) {
+                    outputBlock.innerHTML = outputText.substring(0, i + 1) + '<span class="cursor"></span>';
+                    i++;
+                    setTimeout(showText, 60);
+                }
+            }
+
+            showText();
+        }
+
+        typeCode();
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const targetWidth = getComputedStyle(bar).getPropertyValue('--width');
+                    bar.style.width = targetWidth;
+                    bar.style.transition = 'width 1s ease';
+                    observer.unobserve(bar);
+                }
+            });
+        }, {
+            root: null, // viewport
+            threshold: 1.0, // %100 görünürse başlasın
+            rootMargin: "0px 0px 0px 0px" // kenar toleransı yok
+        });
+
+        skillBars.forEach(bar => {
+            bar.style.width = '0'; // Başta boş
+            observer.observe(bar);
+        });
+    });
 </script>
 </body>
 </html>
